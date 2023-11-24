@@ -12,14 +12,12 @@ variable "project_name" {
   default     = "chess-app"
 }
 
-variable "environment" {
-  type        = string
-  description = "value"
-}
 
 # GLOBAL VARS END
 #################
 
+# NETWORKING VARS START
+######################
 variable "cidr" {
   type        = string
   description = "cidr for vpc"
@@ -42,13 +40,26 @@ variable "public_subnets" {
 
 variable "enable_nat_gateway" {
   type        = bool
-  description = "create nat_gateway yes/no"
+  description = "create nat_gateway"
+}
+
+variable "single_nat_gateway" {
+  type        = bool
+  description = "value"
 }
 
 variable "enable_vpn_gateway" {
   type        = bool
-  description = "create vpn_gateway yes/no"
+  description = "create vpn_gateway"
 }
+
+
+# NETWORKING VARS END
+#####################
+
+
+# EKS VARS START
+#################
 
 variable "cluster_addons" {
   description = "Configuration for cluster addons"
@@ -57,3 +68,38 @@ variable "cluster_addons" {
     most_recent = bool
   }))
 }
+
+# variable "subnet_ids" {
+#   type        = list(string)
+#   description = "A list of subnet IDs where the nodes/node groups will be provisioned."
+# }
+
+# variable "control_plane_subnet_ids" {
+#   type        = list(string)
+#   description = "A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. Used for expanding the pool of subnets used by nodes/node groups without replacing the EKS control plane"
+# }
+
+variable "cluster_version" {
+  type        = string
+  description = "Kubernetes `<major>.<minor>` version to use for the EKS cluster (i.e.: `1.27`)"
+}
+
+variable "cluster_endpoint_public_access" {
+  type        = bool
+  description = "Indicates whether or not the Amazon EKS public API server endpoint is enabled"
+}
+
+variable "cluster_endpoint_private_access" {
+  type        = bool
+  description = "value"
+}
+# EKS VARS END
+
+# API GATEWAY START
+
+variable "alb_listener_arn" {
+  description = "ARN of the existing ALB Listener"
+  type        = string
+}
+
+# API GATEWAY END

@@ -8,14 +8,8 @@ variable "region" {
 variable "project_name" {
   type        = string
   description = "project name"
-  default     = "chess-app"
+  default     = "hello-world"
 }
-
-variable "environment" {
-  type        = string
-  description = "value"
-}
-
 
 # GLOBAL VARS END
 #################
@@ -48,6 +42,11 @@ variable "enable_nat_gateway" {
   type        = bool
   description = "create nat_gateway yes/no"
 }
+variable "single_nat_gateway" {
+  type        = bool
+  description = "value"
+}
+
 
 variable "enable_vpn_gateway" {
   type        = bool
