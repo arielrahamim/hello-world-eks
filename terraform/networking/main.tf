@@ -1,7 +1,3 @@
-# locals {
-#   azs      = flatten([for region in var.region : ["${region}a", "${region}b"]])
-# }
-
 module "vpc" {
   source             = "terraform-aws-modules/vpc/aws"
   name               = "${var.project_name}-vpc"
@@ -18,12 +14,12 @@ module "vpc" {
   enable_vpn_gateway = false
 
 
-  ### public subnets for load balancer controller
+  ### tagging public subnets for load balancer controller
   public_subnet_tags = {
     "kubernetes.io/role/elb"                        = 1
     "kubernetes.io/cluster/${var.project_name}" = "owned"
   }
-  ### private subnets for load balancer controller
+  ### tagging private subnets for load balancer controller
   private_subnet_tags = {
     "kubernetes.io/role/internal-elb"               = 1
     "kubernetes.io/cluster/${var.project_name}" = "owned"

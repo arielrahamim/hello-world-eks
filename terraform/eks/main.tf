@@ -41,8 +41,7 @@ module "eks" {
   }
 }
 
-# look into a bug that you need to delete lines 110-114 from the json policy
-# either install the aws load balancer or supply new json policy for the module
+
 module "kubernetes_addons" {
   source                              = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
   eks_cluster_id                      = module.eks.cluster_name

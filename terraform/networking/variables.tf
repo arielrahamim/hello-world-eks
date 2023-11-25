@@ -1,5 +1,3 @@
-################
-# GLOBAL VARS START
 variable "region" {
   type        = list(string)
   description = "region"
@@ -10,13 +8,6 @@ variable "project_name" {
   description = "project name"
   default     = "hello-world"
 }
-
-# GLOBAL VARS END
-#################
-
-
-#######################
-# NETWORKING VARS START
 
 variable "cidr" {
   type        = string
@@ -52,5 +43,3 @@ variable "enable_vpn_gateway" {
   type        = bool
   description = "create vpn_gateway yes/no"
 }
-# NETWORKING VARS END
-#####################

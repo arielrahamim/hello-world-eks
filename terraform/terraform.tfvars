@@ -39,6 +39,6 @@ cluster_endpoint_public_access  = true
 
 # ALB START
 
-alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/ddaad0ac6fbad5b4/f69ca9675184e302"
+alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/ae37fd20f5aff960/1504bc1c8093dc7a"
 # ALB END
 

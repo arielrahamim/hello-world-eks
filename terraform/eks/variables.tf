@@ -1,11 +1,8 @@
-
-# EKS
 variable "project_name" {
   type        = string
   description = "project name"
   default     = "dev"
 }
-
 
 variable "vpc_id" {
   type        = string
@@ -23,11 +20,6 @@ variable "subnet_ids" {
   type        = list(string)
   description = "A list of subnet IDs where the nodes/node groups will be provisioned."
 }
-
-# variable "control_plane_subnet_ids" {
-#   type        = list(string)
-#   description = "A list of subnet IDs where the EKS cluster control plane (ENIs) will be provisioned. Used for expanding the pool of subnets used by nodes/node groups without replacing the EKS control plane"
-# }
 
 variable "cluster_version" {
   type        = string
