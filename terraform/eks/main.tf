@@ -9,9 +9,7 @@ module "eks" {
   cluster_addons                  = var.cluster_addons
   vpc_id                          = var.vpc_id
   subnet_ids                      = var.subnet_ids
-  create_aws_auth_configmap       = false
-  # manage_aws_auth_configmap      = true
-  enable_irsa = true
+  enable_irsa                     = true
 
   # EKS Managed Node Group(s)
   eks_managed_node_group_defaults = {
@@ -23,28 +21,32 @@ module "eks" {
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
       min_size       = 1
-      max_size       = 15
+      max_size       = 5
       desired_size   = 1
     }
   }
 
-  # # Fargate Profile(s)
-  # fargate_profiles = {
-  #   default = {
-  #     name      = "app"
-  #     selectors = [{ namespace = "default" }]
-  #   }
-  # }
+  # aws_auth_users = [
+  #   {
+  #     userarn  = "arn:aws:iam::011528411754:user/Mushrambo" 
+  #     username = "Mushrambo"
+  #     groups   = ["system:masters"]
+  #   },
+  # ]
+  # aws_auth_accounts = ["011528411754"]
 
   tags = {
     Terraform = "true"
   }
 }
 
-
-module "kubernetes_addons" {
-  source                              = "github.com/aws-ia/terraform-aws-eks-blueprints//modules/kubernetes-addons?ref=v4.32.1"
-  eks_cluster_id                      = module.eks.cluster_name
+module "eks-blueprints-addons" {
+  source                              = "aws-ia/eks-blueprints-addons/aws"
+  version                             = "1.12.0"
+  cluster_endpoint                    = var.cluster_endpoint_private_access
+  cluster_name                        = var.project_name
+  cluster_version                     = var.cluster_version
+  oidc_provider_arn                   = module.eks.oidc_provider_arn
   enable_aws_load_balancer_controller = true
 }
 

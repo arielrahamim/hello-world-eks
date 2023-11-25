@@ -16,12 +16,12 @@ module "vpc" {
 
   ### tagging public subnets for load balancer controller
   public_subnet_tags = {
-    "kubernetes.io/role/elb"                        = 1
+    "kubernetes.io/role/elb"                    = 1
     "kubernetes.io/cluster/${var.project_name}" = "owned"
   }
   ### tagging private subnets for load balancer controller
   private_subnet_tags = {
-    "kubernetes.io/role/internal-elb"               = 1
+    "kubernetes.io/role/internal-elb"           = 1
     "kubernetes.io/cluster/${var.project_name}" = "owned"
   }
 

@@ -20,6 +20,7 @@ enable_vpn_gateway = false
 #########################
 
 # EKS START
+##########################
 cluster_addons = {
   kube-proxy = {
     most_recent = true
@@ -34,11 +35,12 @@ cluster_addons = {
 cluster_version                 = "1.28"
 cluster_endpoint_private_access = true
 cluster_endpoint_public_access  = true
-###################
+########################
 # EKS END
 
 # ALB START
+###################
+alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/fc8be60dceae33e8/9962d08b4a62a8d8"
 
-alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/ae37fd20f5aff960/1504bc1c8093dc7a"
 # ALB END
-
+##################
