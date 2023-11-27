@@ -18,25 +18,21 @@ variable "project_name" {
 
 # NETWORKING VARS START
 ######################
-variable "cidr" {
-  type        = string
-  description = "cidr for vpc"
-}
 
 variable "availability_zones" {
   type        = list(any)
   description = "azs"
 }
 
-variable "private_subnets" {
-  type        = list(string)
-  description = ""
-}
+# variable "private_subnets" {
+#   type        = list(string)
+#   description = ""
+# }
 
-variable "public_subnets" {
-  type        = list(string)
-  description = "value"
-}
+# variable "public_subnets" {
+#   type        = list(string)
+#   description = "value"
+# }
 
 variable "enable_nat_gateway" {
   type        = bool
@@ -53,6 +49,10 @@ variable "enable_vpn_gateway" {
   description = "create vpn_gateway"
 }
 
+variable "vpc_cluster" {
+  type        = number
+  description = ""
+}
 
 # NETWORKING VARS END
 #####################
@@ -103,3 +103,11 @@ variable "alb_listener_arn" {
 }
 
 # API GATEWAY END
+
+
+# nginx-ingress-controller start
+
+variable "kubeconfig_path" {
+  type = string
+}
+# end

@@ -1,18 +1,17 @@
 # GLOBAL VARS START
 ###################
 
-project_name = "hello-world-eks"
+project_name = "eks-cluster"
 region       = ["eu-central-1"]
 # GLOBAL VARS END
 #################
 
 # GLOBAL NETWORKING START
 #########################
-
-cidr               = "172.31.0.0/16"
+vpc_cluster        = 2
 availability_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1a"]
-private_subnets    = ["172.31.1.0/24", "172.31.2.0/24", "172.31.3.0/24"]
-public_subnets     = ["172.31.10.0/24", "172.31.11.0/24", "172.31.12.0/24"]
+# private_subnets    = 
+# public_subnets     = ["10.0.32.0/20"]
 enable_nat_gateway = true
 single_nat_gateway = true
 enable_vpn_gateway = false
@@ -40,7 +39,16 @@ cluster_endpoint_public_access  = true
 
 # ALB START
 ###################
-alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/fc8be60dceae33e8/9962d08b4a62a8d8"
+alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/45f87b45d9dc6502/c12c1646e9838464"
 
 # ALB END
 ##################
+
+
+
+
+# nginx-ingress-controller start
+
+kubeconfig_path = "/home/mushrambo/.kube/config"
+
+# end

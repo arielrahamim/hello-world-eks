@@ -39,14 +39,3 @@ module "eks" {
     Terraform = "true"
   }
 }
-
-module "eks-blueprints-addons" {
-  source                              = "aws-ia/eks-blueprints-addons/aws"
-  version                             = "1.12.0"
-  cluster_endpoint                    = var.cluster_endpoint_private_access
-  cluster_name                        = var.project_name
-  cluster_version                     = var.cluster_version
-  oidc_provider_arn                   = module.eks.oidc_provider_arn
-  enable_aws_load_balancer_controller = true
-}
-

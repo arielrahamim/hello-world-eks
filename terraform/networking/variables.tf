@@ -19,25 +19,25 @@ variable "availability_zones" {
   description = "azs"
 }
 
-variable "private_subnets" {
-  type        = list(string)
-  description = ""
-}
+# variable "private_subnets" {
+#   type        = list(string)
+#   description = ""
+# }
 
-variable "public_subnets" {
-  type        = list(string)
-  description = "value"
-}
+# variable "public_subnets" {
+#   type        = list(string)
+#   description = "value"
+# }
 
 variable "enable_nat_gateway" {
   type        = bool
   description = "create nat_gateway yes/no"
 }
+
 variable "single_nat_gateway" {
   type        = bool
   description = "value"
 }
-
 
 variable "enable_vpn_gateway" {
   type        = bool
