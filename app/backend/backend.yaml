@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: okteto-hello-world-deployment
+  name: backend-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: okteto-hello-world
+      app: backend
   template:
     metadata:
       labels:
-        app: okteto-hello-world
+        app: backend
     spec:
       containers:
-      - name: okteto-hello-world
-        image: okteto/hello-world
+      - name: client
+        image: arielrahamim/backend-eks
         ports:
-        - containerPort: 80
+        - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: okteto-hello-world-service
+  name: backend-service
 spec:
   selector:
-    app: okteto-hello-world
+    app: backend
   ports:
     - protocol: TCP
-      port: 80
+      port: 3000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -40,10 +40,10 @@ spec:
   rules:
     - http:
         paths:
-          - path: /hello/ariel
-            pathType: Exact
+          - path: /
+            pathType: Prefix
             backend:
               service:
-                name: okteto-hello-world-service
+                name: backend-service
                 port:
-                  number: 80
+                  number: 3000

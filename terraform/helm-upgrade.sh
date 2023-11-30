@@ -18,7 +18,6 @@ fi
 
 
 helm repo add "$CHART_NAME" "$CHART_URL" --kubeconfig "$KUBECONFIG_FILE"
-# helm repo update --kubeconfig "$KUBECONFIG_FILE"
 helm upgrade -i "$RELEASE_NAME" "$CHART_NAME"/"$CHART_PATH" --namespace "$NAMESPACE" --kubeconfig "$KUBECONFIG_FILE" -f <(echo "$VALUES_FILE") --create-namespace --dependency-update
 
 
