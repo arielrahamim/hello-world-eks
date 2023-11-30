@@ -1,7 +1,6 @@
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
-  version = "~> 19.0"
-
+  source                          = "terraform-aws-modules/eks/aws"
+  version                         = "~> 19.0"
   cluster_name                    = var.project_name
   cluster_version                 = var.cluster_version
   cluster_endpoint_public_access  = var.cluster_endpoint_public_access
@@ -21,21 +20,27 @@ module "eks" {
       instance_types = ["t3.large"]
       capacity_type  = "SPOT"
       min_size       = 1
-      max_size       = 5
+      max_size       = 10
       desired_size   = 1
     }
   }
-
-  # aws_auth_users = [
-  #   {
-  #     userarn  = "arn:aws:iam::011528411754:user/Mushrambo" 
-  #     username = "Mushrambo"
-  #     groups   = ["system:masters"]
-  #   },
-  # ]
-  # aws_auth_accounts = ["011528411754"]
 
   tags = {
     Terraform = "true"
   }
 }
+
+module "eks-kubeconfig" {
+  source       = "hyperbadger/eks-kubeconfig/aws"
+  version      = "2.0.0"
+  depends_on   = [module.eks]
+  cluster_name = var.project_name
+}
+
+
+
+resource "local_file" "kubeconfig" {
+  content  = module.eks-kubeconfig.kubeconfig
+  filename = "kubeconfig/${var.project_name}-kubeconfig"
+}
+

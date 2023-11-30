@@ -9,7 +9,7 @@ region       = ["eu-central-1"]
 # GLOBAL NETWORKING START
 #########################
 vpc_cluster        = 2
-availability_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1a"]
+availability_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
 # private_subnets    = 
 # public_subnets     = ["10.0.32.0/20"]
 enable_nat_gateway = true
@@ -39,7 +39,7 @@ cluster_endpoint_public_access  = true
 
 # ALB START
 ###################
-alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:listener/app/k8s-default-hellowor-8cb7faeb77/45f87b45d9dc6502/c12c1646e9838464"
+alb_listener_arn = ""
 
 # ALB END
 ##################
@@ -48,7 +48,5 @@ alb_listener_arn = "arn:aws:elasticloadbalancing:eu-central-1:011528411754:liste
 
 
 # nginx-ingress-controller start
-
-kubeconfig_path = "/home/mushrambo/.kube/config"
 
 # end

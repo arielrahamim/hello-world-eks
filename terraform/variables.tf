@@ -107,7 +107,7 @@ variable "alb_listener_arn" {
 
 # nginx-ingress-controller start
 
-variable "kubeconfig_path" {
-  type = string
-}
+# variable "kubeconfig_path" {
+#   type = string
+# }
 # end

@@ -1,7 +1,6 @@
 variable "project_name" {
   type        = string
   description = "project name"
-  default     = "dev"
 }
 
 variable "vpc_id" {
@@ -34,5 +33,3 @@ variable "cluster_endpoint_private_access" {
   type        = bool
   description = "value"
 }
-
-

@@ -47,7 +47,6 @@ provider "aws" {
 #   }
 # }
 
-
 # provider "kubernetes" {
 #   alias                  = "kubernetes-1"
 #   host                   = module.eks[1].cluster_endpoint
